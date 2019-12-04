@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -29,12 +30,12 @@
             </div>
             <h3>Welcome to agenda</h3>
             </p>
-            <form class="m-t" role="form" action="index.html">
+            <form class="m-t" role="form" method="post" action="identif_login.php">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Username" required="">
+                    <input name="email" type="email" class="form-control" placeholder="Username" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input name="password" type="password" class="form-control" placeholder="Password" required="">
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
