@@ -31,10 +31,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"])) {
             $_SESSION["username"] = $email;
             $_SESSION["authenticated"] = 1;
             $_SESSION["password"] = $_POST["password"];
-            echo $_SESSION["authenticated"];
 
+            $sql2 = "SELECT nom FROM `contact` ";
+            $result2 = mysqli_query($con,$sql2);
+
+            echo '
+            <br><br><br>
+            <center>
+            <div>
+              <select style="width: 15%;">
+              ';
+            while ($row2 = mysqli_fetch_array($result2)){
+
+              echo "<option value='".$row2["nom"]."'>".$row2["nom"]."</option>";
+          }
+          echo '
+          </select>
+        </div>
+        </center>
+
+        ';
        }else {
          echo Util::displayAlertV1("Incorrect password or email ", "warning");
        }
     }
 }
+?>
