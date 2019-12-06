@@ -1,3 +1,10 @@
+<DOCTYPE html>
+  <html>
+  <head>
+    <script src="select.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
 <?php
 
 ob_start();
@@ -7,7 +14,7 @@ session_start();
 require 'DB.php';
 require 'Util.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"])) {
+if ( $_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"]) ) {
     $errors_ = null;
 
     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
@@ -39,21 +46,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["email"])) {
             <br><br><br>
             <center>
             <div>
-              <select style="width: 15%;">
+              <h3>Name : </h3>
+              <select style="width: 15%;" id="selectName">
+              <option>select your name</option>
               ';
             while ($row2 = mysqli_fetch_array($result2)){
 
-              echo "<option value='".$row2["nom"]."'>".$row2["nom"]."</option>";
+              echo "
+              <option value='".$row2["nom"]."'>".$row2["nom"]."</option>";
           }
           echo '
           </select>
         </div>
+        <h3>Téléphone : </h3>
+        <div id="tel"></div>
         </center>
 
         ';
+
        }else {
          echo Util::displayAlertV1("Incorrect password or email ", "warning");
        }
-    }
+
 }
+
+}
+
 ?>
+
+<body>
+
+<script>
+var list =document.getElementById("selectName");
+
+
+list.addEventListener('change', function() {
+
+  fn1();
+
+
+});
+
+</script>
+</body>
+</htm>
